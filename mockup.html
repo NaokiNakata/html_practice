@@ -20,7 +20,7 @@
     <script src="js/bootstrap.min.js"></script>
 
     <style>
-        svg { width: 60%; height: 60%; min-width: 100px; min-height: 100px; border: 1px solid black; }
+        svg { width: 90%; height: 90%; min-width: 100px; min-height: 100px; border: 1px solid black; }
 	    
 		.pie { fill: orange; stroke: white; }
 	</style>
@@ -38,25 +38,65 @@
             <div class="row">
                 <div class="well col-md-4 col-sm-4 col-xs-12">
                     <div class="row">
-                        <div class="well col-md-8 col-sm-8 col-xs-8">
-                            <h1>円グラフを色分けして表示</h1>
+                        <div class="col-md-8 col-sm-8 col-xs-8">
+                            <h1>円グラフ</h1>
                             <svg id="myGraph1"></svg>
                         </div>
 
-                        <div class="well col-md-4 col-sm-4 col-xs-4">
-                            
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <table class="table table-striped">
+                                <tr><th>Name</th><th>Age</th></tr>
+                                <tr><td>Yamada</td><td>16</td></tr>
+                                <tr><td>Suzuki</td><td>26</td></tr>
+                                <tr><td>Tanaka</td><td>36</td></tr>
+                            </table>
                         </div>
                     </div>
                 </div>
 
                 <div class="well col-md-4 col-sm-4 col-xs-12">
-                    <h1>円グラフを色分けして表示</h1>
-		            <svg id="myGraph2"></svg>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-8">
+                            <h1>円グラフ</h1>
+                            <svg id="myGraph2"></svg>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            No
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableData">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="well col-md-4 col-sm-4 col-xs-12">
-                    <h1>円グラフを色分けして表示</h1>
-		            <svg id="myGraph3"></svg>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-8">
+                            <h1>円グラフ</h1>
+                            <svg id="myGraph3"></svg>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <table class="table table-hover">
+                                <tr><th>Name</th><th>Age</th></tr>
+                                <tr><td>Yamada</td><td>16</td></tr>
+                                <tr><td>Suzuki</td><td>26</td></tr>
+                                <tr><td>Tanaka</td><td>36</td></tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,11 +134,36 @@
 
     <!-- script -->
     <script>
-        makePieChart("#myGraph1");
-        makePieChart("#myGraph2");
-        makePieChart("#myGraph3");
-        makePieChart("#myGraph4");
+    function addRowToBottom(){
+        var array = [{"no" : 1 , "name" : "山田"},
+		{"no" : 2 , "name" : "田中"},
+		{"no" : 3 , "name" : "鈴木"},
+		{"no" : 4 , "name" : "川口"}];
+
+        $('#tableData tr').remove();
+        
+        for(i = 0; i < array.length; i++)
+        {
+            var data = array[i];
+            var tr = $('<tr/>');
+            $('<td/>').text(data.no).appendTo(tr);
+            $('<td/>').text(data.name).appendTo(tr);
+            $('#tableData').append(tr);
+        }
+    }
     </script>
+    <!-- script -->
+
+    <!-- script -->
+    <script>
+        makePieChart("#myGraph1");
+
+        makePieChart("#myGraph2");
+        addRowToBottom();
+
+        makePieChart("#myGraph3");
+    </script>
+    <!-- script -->
 
 </body>
 
